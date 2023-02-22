@@ -1,4 +1,5 @@
-import React, {useState, useEffect, useInsertionEffect} from "react";
+import React, {useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import AuthService from "../../_services/AuthService";
 import TokenStorageService from "../../_services/TokenStorageService";
 import { validateLoginFormValues } from "../../_helpers/form-utilities";
@@ -15,7 +16,7 @@ export default function Register() {
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
 
-    useInsertionEffect(() => {
+   useEffect(() => {
         const user = {
             email: formValues.email,
             password: formValues.password,
@@ -23,7 +24,7 @@ export default function Register() {
         };
         if (Object.keys(formErrors).length == 0 && isSubmit) {
             console.log("Register...");
-            Register(user);
+            register(user);
         }
         console.log("useEffect", formErrors);
     }, [formErrors]);
@@ -33,7 +34,7 @@ export default function Register() {
             const res = await AuthService.register(user);
             console.log(res.data);
             TokenStorageService.saveToken(res.data.token);
-            navigate("/login");
+            navigate("/listas");
         } catch (error){
             console.log(error);
         }

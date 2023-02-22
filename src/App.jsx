@@ -1,34 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import "./App.scss";
+import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
+
+import { Header } from "./components/Header/Header";
+
+import JudoList from "./containers/JudoList/JudoList";
+import About from "./containers/About/About";
+import JudoDetail from "./containers/JudoDetail/JudoDetail";
+import Search from "./components/Search/Search";
+import JudoListas from "./components/JudoListas/JudoListas";
+import CreateResults from "./components/CreateResults/CreateResults";
+import CreateCompes from "./components/CreateCompes/CreateCompes";
+import Register from "./containers/Register/Register";
+
+// import SearchForm from "./containers/SearchForm/SearchForm";
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Navigate to="/result" />} />
+          <Route path="/result" element={<JudoList />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/detail/:id" element={<JudoDetail/>} />
+          <Route path="/search" element={<Search/>} />
+          <Route path="/listas" element={<JudoListas/>} />
+          <Route path="/create" element={<CreateResults/>} />
+          <Route path="/createcompes" element={<CreateCompes/>} />
+          <Route path="/register" element={<Register/>} />
+        </Routes>
+      </BrowserRouter>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
