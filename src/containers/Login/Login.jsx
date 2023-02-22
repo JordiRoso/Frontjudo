@@ -51,10 +51,10 @@ export default function Login() {
       dispatch(login(res.data.user));
 
       console.log(res.data.message);
-      if (res.data.message === "User Logged as SUPER_ADMIN") {
-        navigate("/result");
+      if (res.data.message === 'User Logged as ADMIN') {
+        navigate("/createcompes");
       } else {
-        navigate("/result");
+        navigate("/results");
       }
     } catch (error) {
       setMessage("Tiene que estar Registrado")

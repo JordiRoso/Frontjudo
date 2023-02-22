@@ -12,6 +12,7 @@ import CreateResults from "./components/CreateResults/CreateResults";
 import CreateCompes from "./components/CreateCompes/CreateCompes";
 import Register from "./containers/Register/Register";
 import Login from "./containers/Login/Login";
+import HomePage from "./containers/HomePage/HomePage";
 
 // import SearchForm from "./containers/SearchForm/SearchForm";
 
@@ -22,8 +23,8 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Navigate to="/result" />} />
-          <Route path="/result" element={<JudoList />} />
+          <Route path="/" element={<Navigate to="/homepage" />} />
+          <Route path="/results" element={<JudoList />} />
           <Route path="/about" element={<About />} />
           <Route path="/detail/:id" element={<JudoDetail/>} />
           <Route path="/search" element={<Search/>} />
@@ -32,6 +33,7 @@ function App() {
           <Route path="/createcompes" element={<CreateCompes/>} />
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/homepage" element={<HomePage/>} />
         </Routes>
       </BrowserRouter>
     </div>
