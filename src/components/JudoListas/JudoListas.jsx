@@ -18,7 +18,7 @@ function JudoListas() {
       const res = await ResultsService.searchCompetition(competition);
       console.log(res.data);
       setCompetitions(() => res.data);
-      console.log(res)
+      console.log(res);
       console.log(results);
     } catch (error) {
       console.log(error.message || error);
@@ -35,43 +35,22 @@ function JudoListas() {
           <p>Posición: {result.position}</p>
           <p>Nombre: {result.name}</p> */}
           <div>
-      <ol class="list-group">
-  <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      <div class="fw-bold">Peso: {result.weight} Posición: {result.position}</div>
-       
-       Nombre: {result.name}   /Club: {result.club}
-    </div>
-    <span class="badge bg-primary rounded-pill">14</span>
-  </li>
-  {/* <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      <div class="fw-bold">{result.weight}</div>
-      Content for list item
-    </div>
-    <span class="badge bg-primary rounded-pill">14</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      <div class="fw-bold">Subheading</div>
-      Content for list item
-    </div>
-    <span class="badge bg-primary rounded-pill">14</span>
-  </li> */}
-</ol>
-
-      </div>
+            <ol class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">
+                    Peso: {result.weight} Posición: {result.position}
+                  </div>
+                  Nombre: {result.name} /Club: {result.club}
+                </div>
+                <span class="badge bg-primary rounded-pill">14</span>
+              </li>
+            </ol>
+          </div>
         </div>
-        
       ))}
-      
     </div>
-    
-    
   );
-  
-
-  
 }
 
 export default JudoListas;
@@ -79,54 +58,70 @@ export default JudoListas;
 
 
 
-// function JudoListas({ results }) {
-//   return (
-//     <div className="competition-list">
-//       <h1>Lista de Resultados</h1>
-//       {results.map((result, index) => (
-//         <div key={result._id}>
-//           <p>Peso: {result.weight}</p>
-//           <p>Posición: {result.position}</p>
-//           <p>Nombre: {result.name}</p>
-//           <p>Nombre: {result.location}</p>
-//           <p>Nombre: {result.year}</p>
+// import React, { useState, useEffect } from "react";
+// import { useParams } from "react-router-dom";
+// import JudoFilter from "../JudoFilter/JudoFilter";
+// import { ResultsService } from "../../_services/ResultsService";
 
-//         </div>
-//       ))}
-//       <h1>otra</h1>
-//       {results?.results?.map((result, index) => (
-//         <div key={result._id}>
-//           <p>Peso: {result.weight}</p>
-//           <p>Posición: {result.location}</p>
-//           <p>Nombre: {result.name}</p>
-//           <p>Nombre: {result.location}</p>
-//           <p>Nombre: {result.year}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
+// function JudoListas() {
+//   const [competition, setCompetitions] = useState({});
+//   const [filter, setFilter] = useState({});
+//   const { id } = useParams();
 
+//   useEffect(() => {
+//     searchCompetition();
+//   }, [filter]);
 
-// function JudoListas({ results }) {
-//   const listItems = results.map((result, index) => (
-//     <div key={index}>
-//       <p>Peso: {result.weight}</p>
-//       <p>Posición: {result.position}</p>
-//       <p>Nombre: {result.name}</p>
-//     </div>
-//   ));
+//   const searchCompetition = async () => {
+//     try {
+//       const res = await ResultsService.searchCompetition({
+//         ...competition,
+//         ...filter,
+//       });
+//       setCompetitions(() => res.data);
+//     } catch (error) {
+//       console.log(error.message || error);
+//     }
+//   };
+
+//   const handleFilterChange = (newFilter) => {
+//     setFilter((prevFilter) => ({
+//       ...prevFilter,
+//       ...newFilter,
+//     }));
+//   };
 
 //   return (
 //     <div className="competition-list">
 //       <h1>Lista de Resultados</h1>
-//       {listItems}
+//       <JudoFilter
+//         genderOptions={["Male", "Female"]}
+//         categoryOptions={["Cadet", "Junior", "Senior"]}
+//         yearOptions={["2021", "2022", "2023"]}
+//         onFilterChange={handleFilterChange}
+//       />
+//       <h2>{competition?.data?.name}</h2>
+//       {competition?.data?.results.map((result, index) => (
+//         <div key={result._id}>
+//           <div>
+//             <ol class="list-group">
+//               <li class="list-group-item d-flex justify-content-between align-items-start">
+//                 <div class="ms-2 me-auto">
+//                   <div class="fw-bold">
+//                     Peso: {result.weight} Posición: {result.position}
+//                   </div>
+//                   Nombre: {result.name} /Club: {result.club}
+//                 </div>
+//                 <span class="badge bg-primary rounded-pill">14</span>
+//               </li>
+//             </ol>
+//           </div>
+//         </div>
+//       ))}
 //     </div>
 //   );
 // }
 
 // export default JudoListas;
-
-
 
 
