@@ -47,7 +47,7 @@ function CreateResults() {
     try {
       console.log(data);
       // await ResultsService.createCompetition(data);
-      await ResultsService.createCompetitors(data);
+      await ResultsService.createCompetition(data);
       
       setSuccessMessage("Resultados subidos con éxito");
     } catch (error) {

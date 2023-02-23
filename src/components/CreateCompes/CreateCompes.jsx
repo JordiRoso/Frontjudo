@@ -62,7 +62,8 @@ function CreateCompes() {
     try {
       console.log(data);
       const { competitionId, results } = data;
-      await ResultsService.createCompetitors(competitionId, results);
+      console.log(results)
+      await ResultsService.updateCompetition(competitionId, results);
       console.log(competitionId._id);
       setSuccessMessage("Resultados subidos con éxito siiiiii");
     } catch (error) {

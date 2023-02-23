@@ -78,6 +78,7 @@ export default function Navbar() {
                 CreateCompe
               </span>
             </li>
+            
           ) : (
             ""
           )}
@@ -94,6 +95,10 @@ export default function Navbar() {
           <li className="nav-item">
             <NavLink to="/register" className="nav-link">
               Register
+            </NavLink>
+          </li><li className="nav-item">
+            <NavLink to="/create" className="nav-link">
+             CreateCompes
             </NavLink>
           </li>
           

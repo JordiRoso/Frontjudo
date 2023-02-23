@@ -1,62 +1,94 @@
-// import React, { useEffect, useState } from "react";
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { useParams } from "react-router-dom";
+// // import React, { useEffect, useState } from "react";
+// import React, { useState, useEffect } from "react";
+// import PropTypes from "prop-types";
+// import { useParams } from "react-router-dom";
 
-import { ResultsService } from "../../_services/ResultsService";
+// import { ResultsService } from "../../_services/ResultsService";
 
-function JudoListas() {
-  const [competition, setCompetitions] = useState({});
-  const { id } = useParams();
+// function JudoListas() {
+//   const [competition, setCompetitions] = useState({});
+//   const { id } = useParams();
 
-  useEffect(() => {
-    searchCompetition();
-  }, []);
+//   useEffect(() => {
+//     searchCompetition();
+//   }, []);
 
-  const searchCompetition = async () => {
-    try {
-      const res = await ResultsService.searchCompetition(competition);
-      console.log(res.data);
-      setCompetitions(() => res.data);
-      console.log(res);
-      console.log(results);
-    } catch (error) {
-      console.log(error.message || error);
-    }
-  };
+//   const searchCompetition = async () => {
+//     try {
+//       const res = await ResultsService.searchCompetition(competition);
+//       console.log(res.data);
+//       setCompetitions(() => res.data);
+//       console.log(res);
+//       console.log(results);
+//     } catch (error) {
+//       console.log(error.message || error);
+//     }
+//   };
 
-  return (
-    <div className="competition-list">
-      <h1>Lista de Resultados</h1>
-      <h2>{competition?.data?.name}</h2>
-      {competition?.data?.results.map((result, index) => (
-        <div key={result._id}>
-          {/* <p>Peso: {result.weight}</p>
-          <p>Posición: {result.position}</p>
-          <p>Nombre: {result.name}</p> */}
-          <div>
-            <ol class="list-group">
-              <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                  <div class="fw-bold">
-                    Peso: {result.weight} Posición: {result.position}
-                  </div>
-                  Nombre: {result.name} /Club: {result.club}
-                </div>
-                <span class="badge bg-primary rounded-pill">14</span>
-              </li>
-            </ol>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
+//   const handleUpdateResult = async (resultId) => {
+//     try {
+//       // Llamar al servicio de ResultsService para actualizar el resultado
+//       const updatedResult = await ResultsService.updateResult(
+//         resultId /* nuevos datos del resultado */
+//       );
+//       console.log(updatedResult);
+//     } catch (error) {
+//       console.log(error.message || error);
+//     }
+//   };
 
-export default JudoListas;
+//   return (
+//     <div className="competition-list">
+//       <h1>Lista de Resultados nnnn</h1>
+//       <h2>{competition?.data?.name}</h2>
+//       {/* {competition?.data?.results.map((result, index) => (
+//         <div key={result._id}>
+          
+//           <div>
+//             <ol class="list-group">
+//               <li class="list-group-item d-flex justify-content-between align-items-start">
+//                 <div class="ms-2 me-auto">
+//                   <div class="fw-bold">
+//                     Peso: {result.weight} Posición: {result.position}
+//                   </div>
+//                   Nombre: {result.name} /Club: {result.club}
+//                 </div>
+//                 <span class="badge bg-primary rounded-pill">14</span>
+//               </li>
+//             </ol>
+//           </div>
+//         </div>
+//       ))} */}
+//       {competition?.data?.results.map((result, index) => (
+//         <div key={result._id}>
+//           <div>
+//             <ol class="list-group">
+//               <li class="list-group-item d-flex justify-content-between align-items-start">
+//                 <div class="ms-2 me-auto">
+//                   <div class="fw-bold">
+//                     Peso: {result.weight} Posición: {result.position}
+//                   </div>
+//                   Nombre: {result.name} /Club: {result.club}
+//                 </div>
+//                 <div>
+//                   <button
+//                     type="button"
+//                     class="btn btn-success"
+//                     onClick={() => handleUpdateResult(result._id)}
+//                   >
+//                     Actualizar
+//                   </button>
+//                 </div>
+//               </li>
+//             </ol>
+//           </div>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
 
-
-
+// export default JudoListas;
 
 // import React, { useState, useEffect } from "react";
 // import { useParams } from "react-router-dom";
@@ -123,5 +155,3 @@ export default JudoListas;
 // }
 
 // export default JudoListas;
-
-

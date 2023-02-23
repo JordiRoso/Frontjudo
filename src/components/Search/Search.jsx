@@ -354,7 +354,7 @@
 //     export default Search;
 
 import React, { useEffect, useState } from "react";
-import JudoListas from "../JudoListas/JudoListas";
+// import JudoListas from "../JudoListas/JudoListas";
 import { ResultsService } from "../../_services/ResultsService";
 import queryString from "query-string";
 
