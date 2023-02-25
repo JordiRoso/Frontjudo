@@ -145,13 +145,13 @@ function Judo({ competition }) {
   return (
     <div>
       {/* Renderizar el componente JudoFilter y pasarle los valores necesarios */}
-      <JudoFilter
+      {/* <JudoFilter
         genderOptions={["Male", "Female"]}
         categoryOptions={["junior", "senior"]}
         yearOptions={["2020", "2021", "2022"]}
         onFilterChange={handleFilterChange}
         onSearch={() => setIsFiltering(true)}
-      />
+      /> */}
   
       <div className="card text-start movie-card" style={{ width: "13rem" }}>
         <div className="poster-container">

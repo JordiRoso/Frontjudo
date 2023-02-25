@@ -13,6 +13,8 @@ import CreateCompes from "./components/CreateCompes/CreateCompes";
 import Register from "./containers/Register/Register";
 import Login from "./containers/Login/Login";
 import HomePage from "./containers/HomePage/HomePage";
+import Admin from "./containers/Admin/Admin";
+import UserPanel from "./containers/UserPanel/UserPanel";
 
 // import SearchForm from "./containers/SearchForm/SearchForm";
 
@@ -34,6 +36,8 @@ function App() {
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/homepage" element={<HomePage/>} />
+          <Route path="/admin" element={<Admin/>} />
+          <Route path="/user" element={<UserPanel/>} />
         </Routes>
       </BrowserRouter>
     </div>

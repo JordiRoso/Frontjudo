@@ -24,7 +24,12 @@ export default function Navbar() {
 //   };
   const goToCreateCompes = () => {
     navigate("/createcompes");
-  };
+  };const goToOtrafuncion = () => {
+   navigate("/admin");
+ };
+  const goToCreateResults = () => {
+   navigate("/create");
+ };
   const goToListaResultados = () => {
    navigate("/results");
  };
@@ -68,7 +73,7 @@ export default function Navbar() {
               {user.name}
             </span>
           </li>
-          {user.role == 'admin' ? (
+          {/* {user.role == 'admin' ? (
             console.log(user.message),
             <li className="nav-item">
               <span
@@ -77,11 +82,45 @@ export default function Navbar() {
               >
                 CreateCompe
               </span>
-            </li>
+            </li> */}
+            {user.role == 'admin' ? (
+                <React.Fragment>
+        <li className="nav-item">
+          <span
+            onClick={goToCreateCompes}
+            className="nav-link navbar-logout"
+          >
+            CreateCompe
+          </span>
+        </li>
+        <li className="nav-item">
+           <span
+             onClick={goToOtrafuncion }
+             className="nav-link navbar-logout"
+           >
+             Otra opción
+           </span>
+         </li>
+        </React.Fragment>
+      ) : user.role == 'superadmin' ? (
+         <React.Fragment>
+         <li className="nav-item">
+           <span
+             onClick={goToCreateResults}
+             className="nav-link navbar-logout"
+           >
+             CreateResults
+           </span>
+         </li>
+         
+       </React.Fragment>
+             
+             
             
           ) : (
             ""
           )}
+          
         </>
       );
     } else {
@@ -96,11 +135,12 @@ export default function Navbar() {
             <NavLink to="/register" className="nav-link">
               Register
             </NavLink>
-          </li><li className="nav-item">
+          </li>
+          {/* <li className="nav-item">
             <NavLink to="/create" className="nav-link">
              CreateCompes
             </NavLink>
-          </li>
+          </li> */}
           
           {/* <li className="nav-item">
             <NavLink to="/createcompes" className="nav-link" end>

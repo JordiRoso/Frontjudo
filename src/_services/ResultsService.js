@@ -5,8 +5,12 @@ export const ResultsService = {};
 
 ResultsService.getAllCompetitions = async () => {
     try{
+      const token = sessionStorage.getItem("auth-token");
+      const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
       const req = `${environment.BASE_API_URL}/results`;
-      const res = await axios.get(req);
+      const res = await axios.get(req,config);
       if (!res.data) {
         throw new Error("No se encontraron resultados");
       }
