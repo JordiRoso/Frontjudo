@@ -132,14 +132,14 @@ function CreateCompes() {
   };
 
   return (
-    <div class="container">
+    <div className="container">
   <h2>Crear Resultados</h2>
   {successMessage && <p>{successMessage}</p>}
   {errorMessage && <p>{errorMessage}</p>}
   <form onSubmit={handleSubmit}>
-    <div class="form-group">
+    <div className="form-group">
       <label htmlFor="competition">Competición:</label>
-      <select class="form-control" id="competition" value={competitionId || ""} onChange={handleCompetitionChange}>
+      <select className="form-control" id="competition" value={competitionId || ""} onChange={handleCompetitionChange}>
         {competitions.map((competition) => (
           <option key={competition._id} value={competition._id}>
             {competition.name} ({competition.category} - {competition.year} - {competition.gender})
@@ -148,17 +148,17 @@ function CreateCompes() {
       </select>
     </div>
 
-    <div class="form-group">
+    <div className="form-group">
       <label htmlFor="gender">Género:</label>
-      <select class="form-control" id="gender" value={selectedGender} onChange={handleGenderChange}>
+      <select className="form-control" id="gender" value={selectedGender} onChange={handleGenderChange}>
         <option value="male">Masculino</option>
         <option value="female">Femenino</option>
       </select>
     </div>
 
-    <div class="form-group">
+    <div className="form-group">
       <label htmlFor="weight">Peso:</label>
-      <select class="form-control" id="weight" value={selectedWeight} onChange={handleWeightChange}>
+      <select className="form-control" id="weight" value={selectedWeight} onChange={handleWeightChange}>
         {selectedGender === "male" ? (
           <>
             <option value="-60">-60</option>
@@ -183,9 +183,9 @@ function CreateCompes() {
       </select>
     </div>
 
-    <div class="form-group">
+    <div className="form-group">
       <label htmlFor="position">Position:</label>
-      <select class="form-control" id="position" value={selectedPosition} onChange={handlePositionChange}>
+      <select className="form-control" id="position" value={selectedPosition} onChange={handlePositionChange}>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -195,17 +195,17 @@ function CreateCompes() {
       </select>
     </div>
 
-    <div class="form-group">
+    <div className="form-group">
       <label htmlFor="name">Nombre Competidor:</label>
-      <input type="text" class="form-control" id="name" value={selectedName} onChange={handleNameChange} />
+      <input type="text" className="form-control" id="name" value={selectedName} onChange={handleNameChange} />
     </div>
 
-    <div class="form-group">
+    <div className="form-group">
       <label htmlFor="club">Club:</label>
-      <input type="text" class="form-control" id="club" value={selectedClub} onChange={handleClubChange} />
+      <input type="text" className="form-control" id="club" value={selectedClub} onChange={handleClubChange} />
     </div>
 
-    <button type="submit" class="btn btn-primary">Actualizar resultados</button>
+    <button type="submit" className="btn btn-primary">Actualizar resultados</button>
   </form>
 </div>
 

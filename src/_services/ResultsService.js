@@ -5,10 +5,30 @@ export const ResultsService = {};
 
 ResultsService.getAllCompetitions = async () => {
   try {
-    const token = sessionStorage.getItem("auth-token");
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
+    // const token = sessionStorage.getItem("auth-token");
+    // const config = {
+    //   headers: { Authorization: `Bearer ${token}` },
+    // };
+    const req = `${environment.BASE_API_URL}/results`;
+    const res = await axios.get(req,);
+    if (!res.data) {
+      throw new Error("No se encontraron resultados");
+    }
+    return res.data;
+  } catch (error) {
+    console.log("Error al acceder a la información del API");
+    throw error;
+  }
+};
+
+ResultsService.getAllResults = async () => {
+  try {
+    // const token = sessionStorage.getItem("auth-token");
+    // const config = {
+    //   headers: { Authorization: `Bearer ${token}` },
+    // };
+  
+
     const req = `${environment.BASE_API_URL}/results`;
     const res = await axios.get(req, config);
     if (!res.data) {
@@ -20,6 +40,23 @@ ResultsService.getAllCompetitions = async () => {
     throw error;
   }
 };
+
+
+// ResultsService.getAllResults = async () => {
+//   try {
+//     const req = `${environment.BASE_API_URL}/results`;
+//     const res = await axios.get(req);
+//     if (!res.data) {
+//       throw new Error("No se encontraron resultados");
+//     }
+//     return res.data;
+//   } catch (error) {
+//     console.log("Error al acceder a la información del API");
+//     throw error;
+//   }
+// };
+
+
 //  ResultsService.searchCompetition  = async (name, year, gender, category) => {
 //   console.log("Valores de los parámetros: ", name, year, gender, category);
 //   try {
