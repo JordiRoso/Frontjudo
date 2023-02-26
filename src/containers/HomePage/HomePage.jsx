@@ -1,9 +1,9 @@
 import React from 'react';
-// import { NavLink, useNavigate } from "react-router-dom";
+
 
 export default function HomePage  ()  {
 
-    // const navigate = useNavigate();
+   
 
 return (
     <div className="container my-5">

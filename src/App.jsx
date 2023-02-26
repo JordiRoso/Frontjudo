@@ -18,7 +18,6 @@ import UserPanel from "./containers/UserPanel/UserPanel";
 
 // import SearchForm from "./containers/SearchForm/SearchForm";
 
-
 function App() {
   return (
     <div className="App">
@@ -28,16 +27,15 @@ function App() {
           <Route path="/" element={<Navigate to="/homepage" />} />
           <Route path="/results" element={<JudoList />} />
           <Route path="/about" element={<About />} />
-          <Route path="/detail/:id" element={<JudoDetail/>} />
-          <Route path="/search" element={<Search/>} />
-          {/* <Route path="/listas" element={<JudoListas/>} /> */}
-          <Route path="/create" element={<CreateResults/>} />
-          <Route path="/createcompes" element={<CreateCompes/>} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/homepage" element={<HomePage/>} />
-          <Route path="/admin" element={<Admin/>} />
-          <Route path="/user" element={<UserPanel/>} />
+          <Route path="/detail/:id" element={<JudoDetail />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/create" element={<CreateResults />} />
+          <Route path="/createcompes" element={<CreateCompes />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/homepage" element={<HomePage />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/user" element={<UserPanel />} />
         </Routes>
       </BrowserRouter>
     </div>

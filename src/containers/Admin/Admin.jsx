@@ -7,8 +7,6 @@ export default function Admin() {
   const navigate = useNavigate();
   const token = TokenStorageService.getToken();
   const [users, setUsers] = useState([]);
-  
-  // const moviesUser = useSelector((state)=> state.auth.movies);
 
   useEffect(() => {
     const token = sessionStorage.getItem("auth-token");
@@ -16,11 +14,10 @@ export default function Admin() {
     if (!token) {
       navigate(`/login`);
     } else {
-    getAllUsers(token);
+      getAllUsers(token);
     }
   }, []);
 
-  // functions definition
   const getAllUsers = async (token) => {
     try {
       const res = await UserService.getAllUsers(token);
@@ -30,16 +27,12 @@ export default function Admin() {
     }
   };
 
-  
-  const handleDelete = async(userToDelete) => {
+  const handleDelete = async (userToDelete) => {
     const res = await UserService.deleteUser(userToDelete);
     console.log(res);
     await getAllUsers(token);
     console.log(users);
-  }
-  
-
-  
+  };
 
   return (
     <div className="container">
@@ -60,7 +53,14 @@ export default function Admin() {
               <td>{user.email}</td>
               <td>{user.role}</td>
               <td>
-                <button onClick={()=>{handleDelete(user)}} className='btn btn-danger'>borrar</button>
+                <button
+                  onClick={() => {
+                    handleDelete(user);
+                  }}
+                  className="btn btn-danger"
+                >
+                  borrar
+                </button>
               </td>
             </tr>
           ))}
@@ -68,5 +68,4 @@ export default function Admin() {
       </table>
     </div>
   );
-  
 }
