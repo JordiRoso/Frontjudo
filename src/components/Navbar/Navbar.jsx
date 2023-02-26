@@ -42,23 +42,16 @@ export default function Navbar() {
     if (isLoggedIn) {
       return (
         <>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <span
               onClick={handleEnterProfile}
               className="nav-link navbar-username"
             >
-              Pagina personal:
+              Usuario:
               {user.name}
             </span>
-          </li>
-          <li className="nav-item">
-              <span
-                onClick={goToListaResultados}
-                className="nav-link navbar-logout"
-              >
-            Lista de Resultados
-              </span>
-            </li>
+          </li> */}
+          
           <li className="nav-item">
             <span onClick={handleLogout} className="nav-link navbar-logout">
               Logout
@@ -73,6 +66,15 @@ export default function Navbar() {
               {user.name}
             </span>
           </li>
+          <div className="navbar-spacer"></div>
+          <li className="nav-item">
+              <span
+                onClick={goToListaResultados}
+                className="nav-link navbar-logout "
+              >
+          Resultados
+              </span>
+            </li>
           {/* {user.role == 'admin' ? (
             console.log(user.message),
             <li className="nav-item">
@@ -90,17 +92,10 @@ export default function Navbar() {
             onClick={goToCreateCompes}
             className="nav-link navbar-logout"
           >
-            CreateCompe
+            Crear Resultados
           </span>
         </li>
-        <li className="nav-item">
-           <span
-             onClick={goToOtrafuncion }
-             className="nav-link navbar-logout"
-           >
-             Otra opción
-           </span>
-         </li>
+        
         </React.Fragment>
       ) : user.role == 'superadmin' ? (
          <React.Fragment>
@@ -109,7 +104,15 @@ export default function Navbar() {
              onClick={goToCreateResults}
              className="nav-link navbar-logout"
            >
-             CreateResults
+             Crear Torneo
+           </span>
+         </li>
+         <li className="nav-item">
+           <span
+             onClick={goToOtrafuncion }
+             className="nav-link navbar-logout"
+           >
+             Lista de Usuarios
            </span>
          </li>
          
@@ -154,7 +157,7 @@ export default function Navbar() {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fs-6">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark s-6">
         <div className="container-fluid">
           <a className="navbar-brand" >
             JudoResults
@@ -171,7 +174,7 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav ms-auto me-auto mb-2 mb-lg-0">
               {/* <li className="nav-item">
                 <NavLink to="/results" className="nav-link">
                   JudoList
@@ -186,148 +189,3 @@ export default function Navbar() {
   );
 }
 
-// import React from "react";
-// import { NavLink } from "react-router-dom";
-// import "./Navbar.scss";
-// import logo from "../../assets/react.svg";
-
-// export default function Navbar() {
-//    let activeClassName = "active-link";
-
-//    return (
-//       <div>
-//          {/* <nav>
-//             <ul>
-//                <li>
-//                   <NavLink
-//                      to="/character"
-//                      className={({ isActive }) =>
-//                         isActive ? activeClassName : undefined
-//                      }
-//                   >
-//                      Characters
-//                   </NavLink>
-//                   <NavLink
-//                      to="/about"
-//                      className={({ isActive }) =>
-//                         isActive ? activeClassName : undefined
-//                      }
-//                   >
-//                      About
-//                   </NavLink>
-//                </li>
-//             </ul>
-//          </nav> */}
-
-//          <nav className="navbar navbar-expand-lg navbar-light bg-dark text-light">
-//             <div className="container text-light">
-//                <a className="navbar-brand" href="/">
-//                   {/* <img
-//                      className="logo"
-//                      src={logo}
-//                      alt="Rick Morty"
-//                      width="30"
-//                      height="30"
-//                   /> */}
-//                   <span>JUDO RESULTS</span>
-//                </a>
-//                <button
-//                   className="navbar-toggler"
-//                   type="button"
-//                   data-bs-toggle="collapse"
-//                   data-bs-target="#navbarSupportedContent"
-//                   aria-controls="navbarSupportedContent"
-//                   aria-expanded="false"
-//                   aria-label="Toggle navigation"
-//                >
-//                   <span className="navbar-toggler-icon"></span>
-//                </button>
-//                <div
-//                   className="collapse navbar-collapse"
-//                   id="navbarSupportedContent"
-//                >
-//                   <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-//                      <li className="nav-item">
-//                         <NavLink to="/result" className="nav-link" end>
-//                            JudoList
-//                         </NavLink>
-//                      </li>
-//                      <li className="nav-item">
-//                         <NavLink to="/create" className="nav-link" end>
-//                            CreateRes
-//                         </NavLink>
-//                      </li>
-//                      <li className="nav-item">
-//                         <NavLink to="/createcompes" className="nav-link" end>
-//                           CreateCompes
-//                         </NavLink>
-//                      </li>
-//                      <li className="nav-item">
-//                         <NavLink to="/register" className="nav-link" end>
-//                           Register
-//                         </NavLink>
-//                      </li>
-//                      <li className="nav-item">
-//                         <NavLink to="/login" className="nav-link" end>
-//                          Login
-//                         </NavLink>
-//                      </li>
-
-//                      <li className="nav-item dropdown">
-//                         <a
-//                            className="nav-link dropdown-toggle"
-//                            href="#"
-//                            id="navbarDropdown"
-//                            role="button"
-//                            data-bs-toggle="dropdown"
-//                            aria-expanded="false"
-//                         >
-//                            Dropdown
-//                         </a>
-//                         <ul
-//                            className="dropdown-menu"
-//                            aria-labelledby="navbarDropdown"
-//                         >
-//                            <li>
-//                               <a className="dropdown-item" href="#">
-//                                  Action
-//                               </a>
-//                            </li>
-//                            <li>
-//                               <a className="dropdown-item" href="#">
-//                                  Another action
-//                               </a>
-//                            </li>
-//                            <li>
-//                               <hr className="dropdown-divider" />
-//                            </li>
-//                            <li>
-//                               <a className="dropdown-item" href="#">
-//                                  Something else here
-//                               </a>
-//                            </li>
-//                         </ul>
-//                      </li>
-//                      <li className="nav-item">
-//                         <NavLink to="/about" className="nav-link">
-//                            About
-//                         </NavLink>
-//                      </li>
-//                   </ul>
-//                   <form className="d-flex">
-//                      <input
-//                         className="form-control me-2"
-//                         type="search"
-//                         placeholder="Search"
-//                         aria-label="Search"
-//                      />
-//                      <button className="btn btn-outline-success" type="submit">
-//                         Search
-//                      </button>
-//                   </form>
-//                </div>
-//             </div>
-//          </nav>
-//       </div>
-//    );
-// }

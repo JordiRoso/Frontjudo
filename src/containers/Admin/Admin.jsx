@@ -35,38 +35,31 @@ export default function Admin() {
   
 
   return (
-    <div>
-      <h2>Panel Admin</h2>
-      
-      
-
-      <div>
-        {users?.map((user) => (
-          <div key={user._id}>
-            
-            <ol>
-              <li>{user.name}</li>
-              <li>{user.email}</li>
-              <li>{user.role}</li>
-              
-            </ol>
-            
-            
-            
-            
-            <div className="admin-buttons">
-                <button onClick={()=>{handleDelete(user)}} className='delete-user'>borrar</button>
-              </div>
-              
-              
-          </div>
-          
-        ))}
-      </div>
-      
-
-
-      
+    <div className="container">
+      <h2 className="my-4">Panel Admin</h2>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {users?.map((user) => (
+            <tr key={user._id}>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.role}</td>
+              <td>
+                <button onClick={()=>{handleDelete(user)}} className='btn btn-danger'>borrar</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
+  
 }

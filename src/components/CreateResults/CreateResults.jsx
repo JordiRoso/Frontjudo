@@ -29,10 +29,10 @@ function CreateResults() {
       year,
       results: [
         {
-          weight,
-          position,
-          name,
-          club,
+          weight: weight,
+          position: position,
+          name: name,
+          club: club,
           // _id: newResultId
         },
       ],

@@ -29,63 +29,57 @@ export default function UserPanel() {
       console.error(error);
       // manejar error
     }
-  }
-  
+  };
 
   return (
-    <div>
-      <h2>Panel Admin</h2>
+    <div className="d-flex justify-content-center">
+      <div className="text-left">
+        <h2>Usuario</h2>
 
-      <div>
-        <ol>
-          <li>{user.name}</li>
-          <li>{user.email}</li>
-          <li>{user.role}</li>
-        </ol>
+        <div>
+          <ol>
+            <li>{user.name}</li>
+            <li>{user.email}</li>
+            <li>{user.role}</li>
+          </ol>
 
-        <div className="admin-buttons">
-          <button
-            onClick={() => setShowModal(true)}
-            className="update-user"
-          >
-            actualizar
-          </button>
+          <div className="admin-buttons">
+            <button
+              onClick={() => setShowModal(true)}
+              className="update-user btn btn-primary"
+            >
+              Actualizar
+            </button>
+          </div>
         </div>
-      </div>
 
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Actualizar nombre de usuario</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Nuevo nombre de usuario:</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Ingrese el nuevo nombre de usuario"
-                value={newUsername}
-                onChange={(e) => setNewUsername(e.target.value)}
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Cancelar
-          </Button>
-          <Button variant="primary" onClick={handleUpdate}>
-            Guardar cambios
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Actualizar nombre de usuario</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Nuevo nombre de usuario:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Ingrese el nuevo nombre de usuario"
+                  value={newUsername}
+                  onChange={(e) => setNewUsername(e.target.value)}
+                />
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShowModal(false)}>
+              Cancelar
+            </Button>
+            <Button variant="primary" onClick={handleUpdate}>
+              Guardar cambios
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
     </div>
   );
 }
-
-
-
-
-
-
-            

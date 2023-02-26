@@ -47,7 +47,7 @@ export default function JudoList() {
   return (
     <div className="competition-list">
       <div className="title-container text-center">
-        <h1>Resultados de las competiciones</h1>
+        <h1>Resultados</h1>
       </div>
       <div className="filter-container text-center">
         <JudoFilter
