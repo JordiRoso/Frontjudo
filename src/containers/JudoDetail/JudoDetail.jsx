@@ -492,6 +492,7 @@ import { useParams } from "react-router-dom";
 import { ResultsService } from "../../_services/ResultsService";
 import { Modal, Button, Form, Spinner } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function JudoDetail() {
   const [competition, setCompetitions] = useState(null);
@@ -509,9 +510,16 @@ function JudoDetail() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const user = useSelector((state) => state.auth.user);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    const token = sessionStorage.getItem("auth-token");
+    console.log(token);
+    if (!token) {
+      navigate(`/login`);
+    } else {
     getSingleCompe();
+    }
   }, []);
 
   const getSingleCompe = async () => {
@@ -653,7 +661,7 @@ function JudoDetail() {
                     </div>
                     Nombre: {result.name} /Club: {result.club}
                   </div>
-                  <div className="d-flex align-items-center">
+                  <div className="d-flex align-items-center justify-content-between">
                     <div className="d-flex align-items-center">
                       {/* <span className="badge bg-primary rounded-pill me-2">
                         14

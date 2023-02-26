@@ -7,10 +7,17 @@ export default function Admin() {
   const navigate = useNavigate();
   const token = TokenStorageService.getToken();
   const [users, setUsers] = useState([]);
+  
   // const moviesUser = useSelector((state)=> state.auth.movies);
 
   useEffect(() => {
+    const token = sessionStorage.getItem("auth-token");
+    console.log(token);
+    if (!token) {
+      navigate(`/login`);
+    } else {
     getAllUsers(token);
+    }
   }, []);
 
   // functions definition

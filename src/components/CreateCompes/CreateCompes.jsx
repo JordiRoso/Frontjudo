@@ -77,11 +77,11 @@ function CreateCompes() {
   };
 
   useEffect(() => {
-    // const token = sessionStorage.getItem("auth-token");
-    // console.log(token);
-    // if (!token) {
-    //   navigate(`/login`);
-    // } else {
+    const token = sessionStorage.getItem("auth-token");
+    console.log(token);
+    if (!token) {
+      navigate(`/login`);
+    } else {
       const getAllCompetitions = async () => {
         try {
           const res = await ResultsService.getAllCompetitions();
@@ -96,7 +96,7 @@ function CreateCompes() {
         }
       };
       getAllCompetitions();
-    // }
+    }
    
   }, 
   []);

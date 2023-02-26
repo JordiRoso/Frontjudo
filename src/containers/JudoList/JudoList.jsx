@@ -74,13 +74,20 @@ import { ResultsService } from "../../_services/ResultsService";
 import "./JudoList.scss";
 import Judo from "../../components/Judo/Judo";
 import JudoFilter from "../../components/JudoFilter/JudoFilter";
+import { useNavigate } from "react-router-dom";
 
 export default function JudoList() {
   const [competitions, setCompetitions] = useState([]);
   const [filter, setFilter] = useState({ gender: "", category: "", year: "" }); // inicializar estado del filtro
-
+  const navigate = useNavigate();
   useEffect(() => {
+    const token = sessionStorage.getItem("auth-token");
+    console.log(token);
+    if (!token) {
+      navigate(`/login`);
+    } else {
     getAllCompetitions();
+    }
   }, [filter]); // actualizar la lista de competiciones cada vez que cambie el filtro
 
   const getAllCompetitions = async () => {
