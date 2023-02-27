@@ -145,6 +145,23 @@ ResultsService.deleteCompe = async (resultId) => {
 
 export default ResultsService;
 
+
+ResultsService.deleteCompetition = async (resultId) => {
+  try {
+    const response = await axios.delete(
+      `${environment.BASE_API_URL}/results/competition/${resultId}`
+    );
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+
+
+
+
+
 ResultsService.createCompetition = async (data) => {
   try {
     let url;
