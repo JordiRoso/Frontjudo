@@ -3,5 +3,5 @@ export const environment = {
 
 //API
 // BASE_API_URL: `http://localhost:3000`,
-BASE_API_URL:`https://frontjudo-production.up.railway.app`,
+BASE_API_URL:`buscador-resultados-judo.up.railway.app`,
 };
