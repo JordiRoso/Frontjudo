@@ -108,6 +108,7 @@ function CreateResults() {
       <h1>Create Results</h1>
       {successMessage && <p class="alert alert-success">{successMessage}</p>}
       {errorMessage && <p class="alert alert-danger">{errorMessage}</p>}
+   
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name:</label>

@@ -34,12 +34,34 @@ function JudoDetail() {
     }
   }, []);
 
+  // const getSingleCompe = async () => {
+  //   try {
+  //     setLoading(true); // activar el indicador de carga
+  //     const res = await ResultsService.getSingleCompe(id);
+  //     console.log(res.data);
+  //     setCompetitions(() => res.data);
+  //     console.log(res);
+  //     console.log(competition);
+  //     setLoading(false); // desactivar el indicador de carga después de cargar los datos
+  //   } catch (error) {
+  //     console.log(error.message || error);
+  //     setLoading(false); // asegurarse de que el indicador de carga se desactive en caso de error
+  //   }
+  // };
   const getSingleCompe = async () => {
     try {
       setLoading(true); // activar el indicador de carga
       const res = await ResultsService.getSingleCompe(id);
       console.log(res.data);
-      setCompetitions(() => res.data);
+      const sortedResults = res.data.data.results.sort((a, b) => {
+        const weightA = Math.abs(a.weight);
+        const weightB = Math.abs(b.weight);
+        if (weightA === weightB) {
+          return a.position - b.position;
+        }
+        return weightA - weightB;
+      });
+      setCompetitions(() => ({ ...res.data, data: { ...res.data.data, results: sortedResults } }));
       console.log(res);
       console.log(competition);
       setLoading(false); // desactivar el indicador de carga después de cargar los datos
@@ -48,6 +70,8 @@ function JudoDetail() {
       setLoading(false); // asegurarse de que el indicador de carga se desactive en caso de error
     }
   };
+  
+  
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = (index) => {
@@ -125,9 +149,46 @@ function JudoDetail() {
                   </div>
                   <div className="d-flex align-items-center justify-content-between">
                     <div className="d-flex align-items-center">
-                      {/* <span className="badge bg-primary rounded-pill me-2">
-                        14
-                      </span> */}
+                      <div className="ml-auto d-flex align-items-center">
+                        {user.role !== "user" && (
+                          <div className="me-3">
+                            <Button onClick={() => handleShowModal(index)}>
+                              Editar
+                            </Button>
+                          </div>
+                        )}
+                        {user.role !== "user" && (
+                          <div>
+                            <Button
+                              onClick={() => handleDeleteResult(index)}
+                              className="delete-result btn btn-danger me-2"
+                            >
+                              Eliminar
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="ml-auto">
+                      {user.role !== "user" && (
+                        <div>
+                          <button
+                            onClick={() => {
+                              setSelectedIndex(null); // resetear selectedIndex a null
+                              handleShowModal(null);
+                            }}
+                            className="update-user btn btn-primary ms-2"
+                          >
+                            Crear Nuevo
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* <div className="d-flex align-items-center justify-content-between">
+                    <div className="d-flex align-items-center">
+                      
                       <div className="ml-auto">
                         {user.role !== "user" && (
                           <div>
@@ -163,7 +224,7 @@ function JudoDetail() {
                         </div>
                       )}
                     </div>
-                  </div>
+                  </div> */}
                 </li>
               </ol>
             </div>

@@ -39,7 +39,11 @@ Si tienes alguna duda, consulta la sección de Deployment para más información
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
-El proyecto está en modo preview en GitHub y puedes acceder a él en el siguiente enlace: https://resonant-cascaron-5096a3.netlify.app/
+El proyecto está en modo preview en GitHub y puedes acceder a él en el siguiente enlace: https://jordiroso.github.io/Frontjudo/
+
+usuario: jordirosado@jordirosado.com contraseña: 123456
+admin: wolfang@wolfang.com contraseña: 123456
+superadmin: fonten@fonten.com contraseña: 123456
 
 ## 🎈 Usage <a name="usage"></a>
 
