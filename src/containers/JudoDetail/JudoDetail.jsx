@@ -25,13 +25,13 @@ function JudoDetail() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = sessionStorage.getItem("auth-token");
-    console.log(token);
-    if (!token) {
-      navigate(`/login`);
-    } else {
-      getSingleCompe();
-    }
+    // const token = sessionStorage.getItem("auth-token");
+    // console.log(token);
+    // if (!token) {
+    //   navigate(`/login`);
+    // } else {
+    getSingleCompe();
+    // }
   }, []);
 
   // const getSingleCompe = async () => {
@@ -61,7 +61,10 @@ function JudoDetail() {
         }
         return weightA - weightB;
       });
-      setCompetitions(() => ({ ...res.data, data: { ...res.data.data, results: sortedResults } }));
+      setCompetitions(() => ({
+        ...res.data,
+        data: { ...res.data.data, results: sortedResults },
+      }));
       console.log(res);
       console.log(competition);
       setLoading(false); // desactivar el indicador de carga después de cargar los datos
@@ -70,8 +73,6 @@ function JudoDetail() {
       setLoading(false); // asegurarse de que el indicador de carga se desactive en caso de error
     }
   };
-  
-  
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = (index) => {
@@ -237,7 +238,7 @@ function JudoDetail() {
         <Modal.Body>
           <Form>
             <Form.Group controlId="weight">
-              <Form.Label>Peso</Form.Label>
+              {/* <Form.Label>Peso</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Ingrese el peso"
@@ -245,7 +246,42 @@ function JudoDetail() {
                 onChange={(e) =>
                   setNewResult({ ...newResult, weight: e.target.value })
                 }
-              />
+              /> */}
+              <Form.Group>
+                <Form.Label>Peso:</Form.Label>
+                <Form.Control
+                  as="select"
+                  value={newResult.weight}
+                  onChange={(e) =>
+                    setNewResult({ ...newResult, weight: e.target.value })
+                  }
+                >
+                  <option value="">Seleccione una opción</option>
+                  console.log("competition: ", competition);
+                  {competition && competition.data && competition.data.gender === "male" ? (
+                    
+                    <>
+                      <option value="-60">-60 kg </option>
+                      <option value="-66">-66 kg</option>
+                      <option value="-73">-73 kg</option>
+                      <option value="-81">-81 kg</option>
+                      <option value="-90">-90 kg</option>
+                      <option value="-100">-100 kg</option>
+                      <option value="100">+100 kg</option>
+                    </>
+                  ) : (
+                    <>
+                      <option value="-48">-48 </option>
+                      <option value="-52">-52 kg</option>
+                      <option value="-57">-57 kg</option>
+                      <option value="-63">-63 kg</option>
+                      <option value="-70">-70 kg</option>
+                      <option value="-78">-78 kg</option>
+                      <option value="78">+78 kg</option>
+                    </>
+                  )}
+                </Form.Control>
+              </Form.Group>
             </Form.Group>
 
             <Form.Group controlId="position">

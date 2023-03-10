@@ -21,31 +21,16 @@ ResultsService.getAllCompetitions = async () => {
   }
 };
 
-ResultsService.getAllResults = async () => {
-  try {
-    // const token = sessionStorage.getItem("auth-token");
-    // const config = {
-    //   headers: { Authorization: `Bearer ${token}` },
-    // };
-  
-
-    const req = `${environment.BASE_API_URL}/results`;
-    const res = await axios.get(req, config);
-    if (!res.data) {
-      throw new Error("No se encontraron resultados");
-    }
-    return res.data;
-  } catch (error) {
-    console.log("Error al acceder a la información del API");
-    throw error;
-  }
-};
-
-
 // ResultsService.getAllResults = async () => {
 //   try {
+//     const token = sessionStorage.getItem("auth-token");
+//     const config = {
+//       headers: { Authorization: `Bearer ${token}` },
+//     };
+  
+
 //     const req = `${environment.BASE_API_URL}/results`;
-//     const res = await axios.get(req);
+//     const res = await axios.get(req,config);
 //     if (!res.data) {
 //       throw new Error("No se encontraron resultados");
 //     }
@@ -55,6 +40,22 @@ ResultsService.getAllResults = async () => {
 //     throw error;
 //   }
 // };
+
+
+ResultsService.getAllResults = async () => {
+  try {
+    const req = `${environment.BASE_API_URL}/results/judo`;
+    const res = await axios.get(req);
+    console.log('API Response:', res.data);
+    if (!res.data) {
+      throw new Error("No se encontraron resultados");
+    }
+    return res.data;
+  } catch (error) {
+    console.log("Error al acceder a la información del API");
+    throw error;
+  }
+};
 
 
 //  ResultsService.searchCompetition  = async (name, year, gender, category) => {
@@ -233,7 +234,9 @@ ResultsService.updateCompetition = async (competitionId, competitionData) => {
     console.log("competitionData:", competitionData);
 
     const weightValues = ["-60", "-66", "-73", "-81", "-90", "-100", "100"];
-const competitionWeightValues = competitionData[0].weight.split(",");
+// const competitionWeightValues = competitionData[0].weight.split(",");
+const competitionWeightValues = competitionData[0].weight.toString().split(",");
+
 
     let url;
     if (weightValues.some((val) => competitionWeightValues.includes(val))) {

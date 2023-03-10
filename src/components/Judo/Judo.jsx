@@ -34,14 +34,45 @@ function Judo({ competition, filter }) {
     }
   };
 
+  
+  // useEffect(() => {
+   
+  //     async function getAllResults() {
+  //       const data = await ResultsService.getAllResults();
+  //       setResults(data.results);
+  //     }
+  //     getAllResults();
+   
+  // }, []);
+  
+  // console.log('Results:', results);
+  // const filteredResults = results.filter((result) => {
+  //   if (filter.gender && filter.gender !== result.gender) {
+  //     return false;
+  //   }
+  //   if (filter.category && filter.category !== result.category) {
+  //     return false;
+  //   }
+  //   if (filter.year && filter.year !== result.year) {
+  //     return false;
+  //   }
+  //   console.log("Resultado filtrado:", result);
+  //   return true;
+  // });
   useEffect(() => {
     async function getAllResults() {
-      const data = await ResultsService.getAllResults();
-      setResults(data.results);
+      try {
+        const data = await ResultsService.getAllResults();
+        setResults(data.data);
+      } catch (error) {
+        console.log(error);
+      }
     }
     getAllResults();
   }, []);
-
+  
+  console.log('Results:', results);
+  
   const filteredResults = results.filter((result) => {
     if (filter.gender && filter.gender !== result.gender) {
       return false;
@@ -52,9 +83,10 @@ function Judo({ competition, filter }) {
     if (filter.year && filter.year !== result.year) {
       return false;
     }
+    console.log("Resultado filtrado:", result);
     return true;
   });
-
+  
   return (
     <div>
       <div className={user.role === "user" ? "visually-hidden" : ""}>

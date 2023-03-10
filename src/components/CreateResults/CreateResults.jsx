@@ -20,6 +20,20 @@ function CreateResults() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    if (!nameComp.trim() || !club.trim()) {
+      setErrorMessage("El nombre del competidor y el club no pueden estar vacíos");
+      setTimeout(() => handleCloseMessage(), 5000);
+      return;
+    }
+
+    if (!name.trim() || !location.trim()) {
+      setErrorMessage("El nombre de la  competicion y localidad no pueden estar vacios");
+      setTimeout(() => handleCloseMessage(), 5000);
+      return;
+    }
+    
+    
+
     const data = {
       name,
       location,
@@ -105,7 +119,7 @@ function CreateResults() {
 
   return (
     <div className="container">
-      <h1>Create Results</h1>
+      <h1>Crear Torneo</h1>
       {successMessage && <p class="alert alert-success">{successMessage}</p>}
       {errorMessage && <p class="alert alert-danger">{errorMessage}</p>}
    
@@ -133,7 +147,7 @@ function CreateResults() {
           </select>
         </div>
         <div className="form-group">
-          <label htmlForr="location">Location:</label>
+          <label htmlFor="location">Location:</label>
           <input
             type="text"
             class="form-control"
